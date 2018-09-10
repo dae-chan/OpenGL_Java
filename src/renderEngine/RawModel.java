@@ -4,8 +4,8 @@ public class RawModel {
 
 	private int vaoID;
 	private int vertexCount;
-	
-	public RawModel (int vaoId, int vertexCount) {
+
+	public RawModel(int vaoId, int vertexCount) {
 		this.vaoID = vaoId;
 		this.vertexCount = vertexCount;
 	}
@@ -17,5 +17,5 @@ public class RawModel {
 	public int getVertexCount() {
 		return vertexCount;
 	}
-	
+
 }
