@@ -1,0 +1,11 @@
+<VAO>
+ - Vertex Array Object
+ - VBO들의 집합
+ - glBindVertexArray(vao)와 glBindVertexArray(0) 사이에 선언한 다양한 VBO들을
+   glBindVertexArray(vao) 호출시에 한 번에 로딩 가능.
+ - ex) VAO - (vertex VBO, color VBO...)
+
+<VBO>
+ - Vertex Buffer Object
+ - 정점의 정보를 저장해 두는 정점들의 집합 버퍼
+ - Vertex, Normal, Colors 등등이 들어갈 수 있다.
