@@ -1,0 +1,22 @@
+<Index>
+ - Vertex를 Input 데이터로 사용하면, Primitive 표현시에 Vertex의 중복이 나타난다.
+ - Vertex를 Index화 하고, Vertex의 순서를 호출하여 Vertex Data가 중복되지 않도록 할 수 있다.
+ - Example
+
+    0 - 3
+    |  /|
+    | / |
+    |/  |
+    1 - 2
+
+   a. Before
+     { 
+       -0.5f, 0.5f, 0f,  // v0
+       -0.5f, -0.5f, 0f, // v1
+       0.5f, -0.5f, 0f,  // v3 - Duplicate
+       0.5f, -0.5f, 0f,  // v3 - Duplicate
+       0.5f, 0.5f, 0f,   // v1
+       -0.5f, 0.5f, 0f   // v2
+     }
+   b. After
+     { 0, 1, 3, 3, 1, 2 }  // Index
