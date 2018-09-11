@@ -1,11 +1,16 @@
 #version 400 core
 
-in vec3 color;
+// uv coordinate that received from vertex shader
+in vec2 pass_textureCoords;
 
 out vec4 out_Color;
 
+// texture that was binded in Renderer
+uniform sampler2D textureSampler;
+
 void main(void) {
 
-  out_Color = vec4(color, 1.0);
+  // get color from texture which matches with uv coordinate and apply to pixel.
+  out_Color = texture(textureSampler, pass_textureCoords);
 
 }

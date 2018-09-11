@@ -1,0 +1,17 @@
+<attribute>
+  0 - position
+  1 - uv
+
+<shader>
+  0 - position (position)
+  1 - uv (textureCoords)
+  
+ - loadToVao (@Loader) -> BindBuffer (@Loader) -> vbo0, vbo1.. (@VAO)
+ - bindAttributes (@StaticShader) -> bindAttribute (@ShaderProgram)
+   -> bind "Attribute (vbo index)" with "Variable Name (@shader)".
+ - BindTexture(@Renderer) -> "uniform sampler2D textureSampler" (@FragmentShader)
+
+ 
+ - VAO - VBO (attribute 0) ---- 'pos' (variable in Vertex Shader)
+       \ VBO (attribute 1) ---- 'uv' (variable in Vertex Shader) ---- 'uv' (variable in Fragment Shader)
+                                                                *---- 'tex' (uniform in Fragment Shader)
