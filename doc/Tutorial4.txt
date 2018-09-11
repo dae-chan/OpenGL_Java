@@ -1,0 +1,12 @@
+<Vertex Shader>
+ - 입력으로 넣은 각각의 vertex 마다 호출됨
+ - vertex를 조작할 수 있다.
+ - 뒤에 호출되는 fragment shader에 값을 전달할 수 있다.
+
+<Fragment Shader>
+ - vertex shader 호출 뒤에 호출됨
+ - 매 vertex 가 아닌, pixel 마다 호출된다.
+ - vertex shader에서 color를 지정했다면, 이는 pixel이 아닌 vertex 기준으로 설정 된 값이므로
+   pixel 단위로 호출되는 fragment shader에서는 해당 pixel의 vertex 좌표를 계산하여 color 값을 보간한다.
+   예를들어, 삼각형의 vertex의 color 값을 각각 R, G, B로 설정했다면, 삼각형 내부의 pixel color는 이 세 점의 color를 보간하여
+   무지개 색으로 보여지게 된다.
