@@ -5,9 +5,13 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
+import org.lwjgl.util.vector.Matrix4f;
 
+import entities.Entity;
 import models.RawModel;
 import models.TexturedModel;
+import shaders.StaticShader;
+import toolbox.Maths;
 
 public class Renderer {
 
@@ -16,23 +20,28 @@ public class Renderer {
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
     }
 
-    public void render(TexturedModel texturedModel) {
+    public void render(Entity entity, StaticShader shader) {
 
-        RawModel model = texturedModel.getRawModel();
+        TexturedModel model = entity.getModel();
+        RawModel rawModel = model.getRawModel();
 
         // 1. Binding VAO
-        GL30.glBindVertexArray(model.getVaoID());
+        GL30.glBindVertexArray(rawModel.getVaoID());
 
         // 2. Enable 0, 1 that vertex and uv positions were added by loader.
         GL20.glEnableVertexAttribArray(0);
         GL20.glEnableVertexAttribArray(1);
 
+        Matrix4f transformationMatrix = Maths.createTransformationMatrix(entity.getPosition(),
+                entity.getRotX(), entity.getRotY(), entity.getRotZ(), entity.getScale());
+        shader.loadTransformationmatrix(transformationMatrix);
+
         // 3. Bind Texture
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
-        GL11.glBindTexture(GL11.GL_TEXTURE_2D, texturedModel.getTexture().getID());
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, model.getTexture().getID());
 
         // 4. Draw
-        GL11.glDrawElements(GL11.GL_TRIANGLES, model.getVertexCount(), GL11.GL_UNSIGNED_INT, 0);
+        GL11.glDrawElements(GL11.GL_TRIANGLES, rawModel.getVertexCount(), GL11.GL_UNSIGNED_INT, 0);
 
         // 5. Disable
         GL20.glDisableVertexAttribArray(0);
