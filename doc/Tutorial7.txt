@@ -1,0 +1,15 @@
+[Uniform]
+ - 모든 shader에서 사용할 수 있는 변수
+ - glGetUniformLocation 함수를 사용하여 셰이더에 선언된 uniform name을 가지고
+   program에서 int형의 uniform handler를 가져온다.
+   : GL20.glGetUniformLocation(programID, uniformName)
+ - uniform handler를 가져온 뒤 glUniform 함수를 사용하여 데이터를 적재한다.
+   : glUniform1f, glUniform3f, glUniformMatrix4
+
+[Transformation]
+ - TRS (Translation, Rotation, Scale)
+ - 4x4 matrix로 TRS를 표현할 수 있다. (Transformation Matrix)
+
+ # 하나의 model을 서로 다른 TRS로 표현하고자 할 때에 VAO를 여러개 생성하여 각각 조작하는 것도 가능하지만,
+   shader의 uniform 변수를 활용하여 Transform Matrix를 곱해준다면,
+   하나의 VAO로 다양한 TRS를 가진 객체를 생성할 수 있다. 
