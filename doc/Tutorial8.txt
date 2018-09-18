@@ -1,0 +1,27 @@
+[Projection Matrix]
+ - 투영 행렬
+ - 투영 행렬을 적용하기 전에는 모델의 z값을 변경해도 model의 크기가 변하지 않는다.
+ - 투영 행렬을 적용한 후에는 모델이 카메라에 투영되어 원근감이 반영된다.
+ - 투영 행렬의 공식은 (FOV, Far, Near) 값으로 계산할 수 있도록 정의되어 있음.
+   http://www.songho.ca/opengl/gl_projectionmatrix.html
+
+[View Matrix]
+ - 카메라 움직임을 반영하는 행렬
+
+[Changes]
+ - Camera.java : 카메라의 좌표를 담고 있는 객체, Keyboard의 Input을 받아 position을 변경함
+ - Maths.java
+   <createViewMatrix> : camera에서 좌표를 추출하여 view matrix를 만든다.
+ - StaticShader.java
+   <getAllUniformLocations> : uniform 변수로 추가된 projection/view matrix 핸들러 가져옴
+   <loadProjectionMatrix> : matrix를 handler를 통해 projection matrix로 전달
+   <loadViewMatrix> : camera로 view matrix를 생성하여 handler를 통해 view matrix로 전달
+ - MainGameLoop.java : RawModel을 Cube로 변경. 
+                       camera의 move함수를 호출하여 Keyboard input 처리되도록 함
+                       shader에 camera를 입력하여 view matrix가 shader에 입력되도록 함
+ - Renderer.java
+   <createProjectionMatrix> : Display의 width, height와 FOV, Near, Far를 사용하여 Projection Matrix 생성
+   <Renderer> : 초기화시 projection matrix 생성 및 shader에 로드.
+   <prepare> : depth test를 켜서 Cube 텍스쳐의 보이는/가려진 부분이 오류가 없도록 함.
+
+ : 카메라가 움직이는 것이 아니다. 물체가 움직이는 것이다.
