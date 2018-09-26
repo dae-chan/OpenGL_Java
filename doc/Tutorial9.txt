@@ -1,0 +1,5 @@
+[Obj format]
+ - v : vertex
+ - vt : uv texture coordinates
+ - vn : normal vectors
+ - f : triangle info (vertex/uv/normal)
