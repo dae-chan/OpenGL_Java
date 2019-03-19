@@ -1,9 +1,7 @@
-
 package entities;
 
-import org.lwjgl.util.vector.Vector3f;
-
 import models.TexturedModel;
+import org.lwjgl.util.vector.Vector3f;
 
 public class Entity {
     private TexturedModel model;
@@ -12,7 +10,7 @@ public class Entity {
     private float scale;
 
     public Entity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ,
-            float scale) {
+                  float scale) {
         super();
         this.model = model;
         this.position = position;

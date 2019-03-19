@@ -1,16 +1,10 @@
-
 package renderEngine;
-
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
-import org.lwjgl.util.vector.Matrix4f;
 
 import entities.Entity;
 import models.RawModel;
 import models.TexturedModel;
+import org.lwjgl.opengl.*;
+import org.lwjgl.util.vector.Matrix4f;
 import shaders.StaticShader;
 import toolbox.Maths;
 

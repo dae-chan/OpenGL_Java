@@ -1,13 +1,6 @@
-
 package renderEngine;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import java.util.ArrayList;
-import java.util.List;
-
+import models.RawModel;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
@@ -16,7 +9,12 @@ import org.lwjgl.opengl.GL30;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
-import models.RawModel;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Loader {
 
@@ -77,8 +75,8 @@ public class Loader {
 
     /**
      * @param attributeNumber : attribute index
-     * @param coordinateSize : size of chunk data
-     * @param data : serialized data
+     * @param coordinateSize  : size of chunk data
+     * @param data            : serialized data
      */
     private void storeDataInAttributeList(int attributeNumber, int coordinateSize, float[] data) {
         // 1. VBO 생성

@@ -1,4 +1,3 @@
-
 package entities;
 
 import org.lwjgl.input.Keyboard;

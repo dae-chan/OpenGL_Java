@@ -1,13 +1,11 @@
-
 package engineTester;
-
-import org.lwjgl.opengl.Display;
-import org.lwjgl.util.vector.Vector3f;
 
 import entities.Camera;
 import entities.Entity;
 import models.RawModel;
 import models.TexturedModel;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector3f;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.Renderer;
