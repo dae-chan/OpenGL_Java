@@ -23,15 +23,15 @@ public class Loader {
     private List<Integer> textures = new ArrayList<>();
 
     public RawModel loadToVao(float[] positions, float[] textureCoords, int[] indices) {
-        // 1. VAO 생성
+        // 1. Generate VAO
         int vaoID = createVAO();
 
-        // 2. VBO 생성 후 데이터 바인딩
+        // 2. Bind data
         storeDataInAttributeList(0, 3, positions);
         storeDataInAttributeList(1, 2, textureCoords);
         bindIndicesBuffer(indices);
 
-        // 3. VAO 언 바인딩
+        // 3. Unbind VAO
         unbindVAO();
 
         return new RawModel(vaoID, indices.length);
@@ -79,19 +79,19 @@ public class Loader {
      * @param data            : serialized data
      */
     private void storeDataInAttributeList(int attributeNumber, int coordinateSize, float[] data) {
-        // 1. VBO 생성
+        // 1. Generate VBO
         int vboID = GL15.glGenBuffers();
         vbos.add(vboID);
 
-        // 2. VBO 바인딩
+        // 2. Bind VBO
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vboID);
 
-        // 3. 데이터 바인딩
+        // 3. Data binding
         FloatBuffer buffer = storeDataInFloatBuffer(data);
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW);
         GL20.glVertexAttribPointer(attributeNumber, coordinateSize, GL11.GL_FLOAT, false, 0, 0);
 
-        // 4. 언 바인딩
+        // 4. Unbind VBO
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
     }
 
@@ -100,14 +100,14 @@ public class Loader {
     }
 
     private void bindIndicesBuffer(int[] indices) {
-        // 1. VBO 생성
+        // 1. Generate VBO
         int vboID = GL15.glGenBuffers();
         vbos.add(vboID);
 
-        // 2. VBO 바인딩
+        // 2. Bind VBO
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, vboID);
 
-        // 3. 데이터 바인딩
+        // 3. Bind data
         IntBuffer buffer = storeDataInIntBuffer(indices);
         GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW);
     }
